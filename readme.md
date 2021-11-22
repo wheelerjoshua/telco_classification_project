@@ -1,18 +1,14 @@
 # About this Project
--------------------------
 To be updated as progress is achieved.
 
 ## Project Goals
-_________________________
 The goal of this project is to identify drivers of churn for the benefit of creating a solution to reduce the rate of churn among customers. 
 
 
 ## Project Description
-_________________________
 With an unsteady and increasingly competitive market, it is cheaper to retain current customers than to establish new ones. We will observe various details of customer contracts and discover what may be driving them to churn and will use the information to create a model to predict future customer churn and a recommendation in reducing rate of churn.
 
 ## Initial Questions
-_________________________
 
 - Are customers with fiber more or less likely to churn?
 - Do customers who churn have a higher average monthly spend than those who don't?
@@ -20,16 +16,13 @@ _________________________
 - Are seniors less likely to churn?
 
 ## Data Dictionary
-_________________________
 Definitions for variables
 
 ## Steps to Reproduce
-_________________________
 What I did to get here?
 
 
 ## The Plan
-_________________________
 
 ### Wrangle
 - acquire.py
