@@ -28,7 +28,7 @@ import acquire
 ##### TELCO
 def prep_telco(df):
     '''
-    Takes in titanic dataframe and returns prepared version of the dataframe
+    Takes in telco dataframe, adjusts all categorical columns and removes unnecessary columns before returning a prepared version of the dataframe.
     '''
     # Drop duplicates
     df.drop_duplicates(inplace = True)
@@ -37,10 +37,11 @@ def prep_telco(df):
     df = df[df.total_charges != ""]
     df.total_charges = df.total_charges.astype(float)
     #############################################
-    dummy_df = pd.get_dummies(df[['gender','partner','dependents','multiple_lines', 'streaming_tv','streaming_movies','paperless_billing','churn',]], dummy_na = False, drop_first = [True, True])
+    dummy_df = pd.get_dummies(df[['gender','partner','dependents','multiple_lines', 'online_security', 'online_backup','device_protection', 'tech_support', 'streaming_tv','streaming_movies','paperless_billing','churn']], dummy_na = False, drop_first = [True, True])
     df = pd.concat([df, dummy_df], axis = 1)
     # Drop unecessary columns
-    df.drop(columns = ['streaming_tv_No internet service','streaming_movies_No internet service','customer_id', 'online_security', 'online_backup', 'device_protection', 'tech_support', 'internet_service_type', 'payment_type','contract_type'], inplace = True)
+    df.drop(columns = ['gender', 'partner', 'dependents', 'phone_service', 'multiple_lines', 'streaming_tv', 'streaming_movies', 'paperless_billing','churn', 'streaming_tv_No internet service','streaming_movies_No internet service','customer_id', 'online_security', 'online_backup', 'device_protection', 'tech_support', 'internet_service_type', 'payment_type', 'contract_type'], inplace = True)
+    df.rename(columns = {'churn_Yes':'churn'}, inplace = True)
 
 
     return df
@@ -50,8 +51,8 @@ def prep_telco(df):
 
 def split_telco(df):
     '''
-    Takes in a dataframe and stratify variable, returns train, validate, test subset dataframes. 
+    Takes in a telco dataframe and returns train, validate, test subset dataframes. 
     '''
-    train, test = train_test_split(df, test_size = .2, stratify = df.churn)
-    train, validate = train_test_split(train, test_size = .3, stratify = train.churn)
+    train, test = train_test_split(df, test_size = .2, stratify = df.churn, random_state = 123)
+    train, validate = train_test_split(train, test_size = .3, stratify = train.churn, random_state = 123)
     return train, validate, test
