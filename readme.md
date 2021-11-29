@@ -32,10 +32,10 @@ Python module with functions defined to clean, tidy, prepare, and split data for
 
 ### Explore
 #### Ask Questions
-1. 
-2. 
-3. 
-4. 
+1. Are customers with fiber more or less likely to churn?
+2. Do customers who churn have a higher average monthly spend than those who don't?
+3. Are customers with dependents less likely to churn than those who don't?
+4. Are seniors less likely to churn?
 
 #### Visualizations
 
